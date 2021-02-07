@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" href="/css/styles.css" rel="stylesheet">
 
-    <script src="/__/firebase/8.2.6/firebase-app.js"></script>
+    <!-- <script src="/__/firebase/8.2.6/firebase-app.js"></script>
     <script src="/__/firebase/8.2.6/firebase-analytics.js"></script>
-    <script src="/__/firebase/init.js"></script>
+    <script src="/__/firebase/init.js"></script> -->
     <script type="text/javascript" src="/js/materialize.min.js"></script>
 </head>
 <body class="grey lighten-4">
@@ -37,45 +37,15 @@
     </li>
   </ul>
 
-  <!-- recipes -->
-  <div class="recipes container grey-text text-darken-1">
-    <div class="card-panel recipe white row">
-      <img src="/img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
+  <!-- tales -->
+  <div class="tales container grey-text text-darken-1">
+    <div class="card-panel tales white row">
+      <img src="/img/dish.png" alt="tales thumb">
+      <div class="tales-details">
+        <div class="tales-title"></div>
+        <div class="tales-reader"></div>
       </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-    <div class="card-panel recipe white row">
-      <img src="/img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-    <div class="card-panel recipe white row">
-      <img src="/img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-    <div class="card-panel recipe white row">
-      <img src="/img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
+      <div class="tales-delete">
         <i class="material-icons">delete_outline</i>
       </div>
     </div>
@@ -87,14 +57,14 @@
     </a>
   </div>
 
-  <!-- add recipe side nav -->
+  <!-- add tales side nav -->
   <div id="side-form" class="sidenav side-form">
-    <form class="add-recipe container section">
-      <h6 >New Recipe</h6>
+    <form class="add-tales container section">
+      <h6 >New tales</h6>
       <div class="divider"></div>
       <div class="input-field">
         <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
-        <label for="title">Recipe Title</label>
+        <label for="title">tales Title</label>
       </div>
       <div class="input-field">
         <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
@@ -107,5 +77,20 @@
   </div>
 
   <script src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/tales.js"></script>
+  <script>
+    console.log("Before onload");
+
+    document.onreadystatechange = () => {
+		if (document.readyState === 'complete') {
+      console.log("onload");
+      tales.forEach(tale => {
+      console.log("foreach" + tale.title + tale.reader);
+      document.getElementsByClassName('tales-title').innerHTML = "tale.title";
+      document.getElementsByClassName('tales-reader').textContent = tale.reader;
+    });
+    }
+  }
+  </script>
 </body>
 </html>
