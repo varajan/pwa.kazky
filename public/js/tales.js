@@ -37,8 +37,6 @@ class Tale {
 function play(id, stream) {
     let audio = document.getElementById("audio");
 
-    console.log("nowPlaying" + nowPlaying);
-
     if (nowPlaying === id) {
         nowPlaying = 0;
         audio.pause();
