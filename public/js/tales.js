@@ -1,7 +1,6 @@
 class Tale{
     constructor(reader, title, id){
-        let index =  (id).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-
+        let index = (id).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
         this.reader = reader;
         this.title = title;
         this.id = `tale-${index}`;
@@ -19,8 +18,8 @@ class Tale{
         var taleTitleDiv   = document.createElement("div");
         var taleReaderDiv  = document.createElement("div");
 
-        let id      = this.id;
-        let stream  = this.stream;
+        let id = this.id;
+        let stream = this.stream;
 
         taleDiv.id = this.id;
         taleDiv.className = "card-panel tales white row";
@@ -48,18 +47,28 @@ class Tale{
 }
 
 function play(id, stream) {
-    var audio = document.getElementById("audio");
+    let audio  = document.getElementById("audio");
 
     if (nowPlaying === id){
         nowPlaying = 0;
         audio.stop();
     } else {
+        let next = getNext(id);
         nowPlaying = id;
         audio.src = stream;
         audio.play();
+        audio.addEventListener("ended",function() { play(next.id, next.stream); });
     }
 
     setPlayBtn();
+}
+
+function getNext(id){
+    for (let i = 0; i < tales.length - 1; i++) {
+        if (tales[i].id === id) return tales[i+1];
+    }
+
+    return tales[0];
 }
 
 function setPlayBtn(){
@@ -70,8 +79,8 @@ function setPlayBtn(){
 
 nowPlaying = 0;
 tales = [
-    new Tale("Johnny", "Tale no 1", 1),
-    new Tale("Billy", "Tale no 2", 2),
-    new Tale("Hanna", "Tale no 3", 3),
-    new Tale("Katty", "Tale no 4", 4),
+    new Tale("Johnny", "Tale no 8", 8),
+    new Tale("Billy", "Tale no 4", 4),
+    new Tale("Hanna", "Tale no 24", 24),
+    new Tale("Katty", "Tale no 9", 9),
 ]
