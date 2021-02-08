@@ -58,6 +58,15 @@ nav .sidenav-trigger{
   font-size: 0.8em;
 }
 
+.tale-image{
+  max-height: 100px;
+}
+
+.play-btn{
+  width: 50px;
+  float: right;
+}
+
 /* form-styles */
 .add-btn{
   background: var(--title) !important;
