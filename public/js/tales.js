@@ -34,18 +34,6 @@ class Tale{
         taleDiv.appendChild(taleDetailsDiv);
 
         talesDiv.appendChild(taleDiv);
-
-    //   <div class="card-panel tales white row">
-    //     <img src="/img/dish.png" alt="tales thumb">
-    //     <div class="tales-details">
-    //       <div class="tales-title" id="title"></div>
-    //       <div class="tales-reader" id="reader"></div>
-    //     </div>
-    //     <div class="tales-delete">
-    //       <i class="material-icons">delete_outline</i>
-    //     </div>
-    //   </div>
-  
     }
 }
 
