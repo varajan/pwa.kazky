@@ -4,91 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UA: Казки</title>
-    <!-- materialize icons, css & js -->
+
     <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" href="/css/styles.css" rel="stylesheet">
 
-    <!-- <script src="/__/firebase/8.2.6/firebase-app.js"></script>
-    <script src="/__/firebase/8.2.6/firebase-analytics.js"></script>
-    <script src="/__/firebase/init.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>
-</head>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/tales.js"></script>
+  </head>
 <body class="grey lighten-4">
 
-  <!-- top nav -->
-  <nav class="z-depth-0">
-    <div class="nav-wrapper container">
-      <a href="/">UA: Казки</a>
-      <span class="right grey-text text-darken-1">
-        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
-      </span>
-    </div>
-  </nav>
+  <div id="sideMenu"></div>
+  <div class="tales container grey-text text-darken-1" id="tales"></div>
 
-  <!-- side nav -->
-  <ul id="side-menu" class="sidenav side-menu">
-    <li><a class="subheader">UA: Казки</a></li>
-    <li><a href="/" class="waves-effect">Home</a></li>
-    <li><a href="/pages/about.html" class="waves-effect">About</a></li>
-    <li><div class="divider"></div></li>
-    <li><a href="/pages/contact.html" class="waves-effect">
-      <i class="material-icons">mail_outline</i>Contact</a>
-    </li>
-  </ul>
-
-  <!-- tales -->
-  <div class="tales container grey-text text-darken-1">
-    <div class="card-panel tales white row">
-      <img src="/img/dish.png" alt="tales thumb">
-      <div class="tales-details">
-        <div class="tales-title"></div>
-        <div class="tales-reader"></div>
-      </div>
-      <div class="tales-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-  </div>
-
-  <div class="center">
-    <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
-      <i class="material-icons">add</i>
-    </a>
-  </div>
-
-  <!-- add tales side nav -->
-  <div id="side-form" class="sidenav side-form">
-    <form class="add-tales container section">
-      <h6 >New tales</h6>
-      <div class="divider"></div>
-      <div class="input-field">
-        <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
-        <label for="title">tales Title</label>
-      </div>
-      <div class="input-field">
-        <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
-        <label for="ingredients">Ingredients</label>
-      </div>
-      <div class="input-field center">
-        <button class="btn-small">Add</button>
-      </div>
-    </form>
-  </div>
-
-  <script src="/js/ui.js"></script>
-  <script type="text/javascript" src="/js/tales.js"></script>
   <script>
-    console.log("Before onload");
-
     document.onreadystatechange = () => {
 		if (document.readyState === 'complete') {
-      console.log("onload");
-      tales.forEach(tale => {
-      console.log("foreach" + tale.title + tale.reader);
-      document.getElementsByClassName('tales-title').innerHTML = "tale.title";
-      document.getElementsByClassName('tales-reader').textContent = tale.reader;
-    });
+
+      loadSideMenu();
+      tales.forEach(tale => { tale.add(); });
     }
   }
   </script>

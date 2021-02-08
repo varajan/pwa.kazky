@@ -2,11 +2,51 @@ class Tale{
     constructor(reader, title, id){
         this.reader = reader;
         this.title = title;
-        this.id = id;
+        this.id = (id).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+
+        this.stream = `https://kazky.suspilne.media/tales/songs/${this.id}.mp3`;
+        this.image = `https://kazky.suspilne.media/tales/img/${this.id}-min.jpg`;
     }
 
-    stream = "https://kazky.suspilne.media/tales/songs/01.mp3";
-    image = "https://kazky.suspilne.media/tales/img/01-min.jpg";
+    add(){
+        var talesDiv       = document.getElementById("tales");
+        var taleDiv        = document.createElement("div");
+        var image          = document.createElement("img");
+        var taleDetailsDiv = document.createElement("div");
+        var taleTitleDiv   = document.createElement("div");
+        var taleReaderDiv  = document.createElement("div");
+
+        taleDiv.id = this.id;
+        taleDiv.className = "card-panel tales white row";
+        image.src = this.image;
+        image.style = "max-width:100px";
+
+        taleDetailsDiv.className = "tales-details";
+        taleTitleDiv.className = "tale-title";
+        taleTitleDiv.textContent = this.title;
+        taleReaderDiv.className = "tale-reader";
+        taleReaderDiv.textContent = this.reader;
+
+        taleDetailsDiv.appendChild(taleReaderDiv);
+        taleDetailsDiv.appendChild(taleTitleDiv);
+
+        taleDiv.appendChild(image);
+        taleDiv.appendChild(taleDetailsDiv);
+
+        talesDiv.appendChild(taleDiv);
+
+    //   <div class="card-panel tales white row">
+    //     <img src="/img/dish.png" alt="tales thumb">
+    //     <div class="tales-details">
+    //       <div class="tales-title" id="title"></div>
+    //       <div class="tales-reader" id="reader"></div>
+    //     </div>
+    //     <div class="tales-delete">
+    //       <i class="material-icons">delete_outline</i>
+    //     </div>
+    //   </div>
+  
+    }
 }
 
 tales = [
