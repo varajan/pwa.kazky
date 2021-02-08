@@ -13,6 +13,9 @@ class Tale {
         var talesDiv = document.getElementById("tales");
         var taleElement = document.createElement("div");
 
+        let id = this.id;
+        let stream = this.stream;
+
         taleElement.id = this.id;
         talesDiv.appendChild(taleElement);
 
@@ -25,6 +28,7 @@ class Tale {
             </div>`;
 
         document.querySelector(`div#${this.id} img.tale-image`).src = this.image;
+        document.querySelector(`div#${this.id} img.play-btn`).onclick = function() { play(id, stream); };
         document.querySelector(`div#${this.id} div.tale-title`).textContent = this.title;
         document.querySelector(`div#${this.id} div.tale-reader`).textContent = this.reader;
     }
@@ -33,9 +37,11 @@ class Tale {
 function play(id, stream) {
     let audio = document.getElementById("audio");
 
+    console.log("nowPlaying" + nowPlaying);
+
     if (nowPlaying === id) {
         nowPlaying = 0;
-        audio.stop();
+        audio.pause();
     } else {
         let next = getNext(id);
         nowPlaying = id;
