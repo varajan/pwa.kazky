@@ -6,13 +6,17 @@
 * {
   font-size: 100%;
   font-family: 'chalkboard';
- }
+}
+
+.text{
+  color:white;
+}
 
 /* colours */
 :root{
   --primary: #FFE9D2;
   --secondary: #FFE1C4;
-  --title: #FF8816;
+  --title: #1a66c9;
 }
 
 /* layout styles */
@@ -32,9 +36,6 @@ nav .sidenav-trigger{
 }
 
 /* tale styles */
-.tales{
-  margin-top: 20px;
-}
 .card-panel.tale{
   border-radius: 8px;
   padding: 10px;
@@ -44,40 +45,44 @@ nav .sidenav-trigger{
   grid-template-areas: "image details delete";
   position: relative;
 }
-.tale img{
-  grid-area: image;
-  max-width: 60px;
-}
 .tale-details{
   grid-area: details;
   margin-top: 6px;
 }
-.tale-delete{
-  grid-area: delete;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
-.tale-delete i{
-  font-size: 18px;
-}
 .tale-title{
   font-weight: bold;
+  position: absolute;
+  bottom: 25px;
+  left: 10px;
 }
 .tale-reader{
   font-size: 0.8em;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
 .tale-image{
-  max-height: 100px;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+}
+div.tale{
+  margin: 5px 5px 5px 5px;
 }
 
 .play-btn{
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
   width: 50px;
-  float: right;
 }
 
 /* form-styles */
+.inline{
+  display: inline !important;
+}
+
 .add-btn{
   background: var(--title) !important;
 }

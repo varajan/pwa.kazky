@@ -10,39 +10,23 @@ class Tale{
     }
 
     add(){
-        var talesDiv       = document.getElementById("tales");
-        var taleDiv        = document.createElement("div");
-        var image          = document.createElement("img");
-        var playBtn        = document.createElement("img");
-        var taleDetailsDiv = document.createElement("div");
-        var taleTitleDiv   = document.createElement("div");
-        var taleReaderDiv  = document.createElement("div");
+        var talesDiv    = document.getElementById("tales");
+        var taleElement = document.createElement("div");
 
-        let id = this.id;
-        let stream = this.stream;
+        taleElement.id = this.id;
+        talesDiv.appendChild(taleElement);
 
-        taleDiv.id = this.id;
-        taleDiv.className = "card-panel tales white row";
-        image.src = this.image;
-        image.className = "tale-image";
-        playBtn.src = "/img/play.png";
-        playBtn.className = "play-btn";
-        playBtn.onclick = function() { play(id, stream); };
+        taleElement.innerHTML = `
+            <div class="tale" style="position: relative;">
+                <img class="tale-image">
+                <img class="play-btn" src="/img/play.png">
+                <div class="tale-title text"></div>
+                <div class="tale-reader text"></div>
+            </div>`;
 
-        taleDetailsDiv.className = "tales-details";
-        taleTitleDiv.className = "tale-title";
-        taleTitleDiv.textContent = this.title;
-        taleReaderDiv.className = "tale-reader";
-        taleReaderDiv.textContent = this.reader;
-
-        taleDetailsDiv.appendChild(taleReaderDiv);
-        taleDetailsDiv.appendChild(taleTitleDiv);
-
-        taleDiv.appendChild(image);
-        taleDiv.appendChild(playBtn);
-        taleDiv.appendChild(taleDetailsDiv);
-
-        talesDiv.appendChild(taleDiv);
+        document.querySelector(`div#${this.id} img.tale-image`).src = this.image;
+        document.querySelector(`div#${this.id} div.tale-title`).textContent = this.title;
+        document.querySelector(`div#${this.id} div.tale-reader`).textContent = this.reader;
     }
 }
 
