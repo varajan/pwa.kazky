@@ -2,6 +2,7 @@ class Tale {
     constructor(id, age, duration, offset, title, reader) {
         let id2 = (id).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
         let id3 = (id).toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false });
+        this.offset = offset;
         this.reader = reader;
         this.title = title;
         this.id = `tale-${id2}`;
@@ -13,9 +14,7 @@ class Tale {
     add() {
         var talesDiv = document.getElementById("tales");
         var taleElement = document.createElement("div");
-
-        let id = this.id;
-        let stream = this.stream;
+        let tale = this;
 
         taleElement.id = this.id;
         talesDiv.appendChild(taleElement);
@@ -29,32 +28,39 @@ class Tale {
             </div>`;
 
         document.querySelector(`div#${this.id} img.tale-image`).src = this.image;
-        document.querySelector(`div#${this.id} img.play-btn`).onclick = function() { play(id, stream); };
+        document.querySelector(`div#${this.id} img.play-btn`).onclick = function() { play(tale); };
         document.querySelector(`div#${this.id} div.tale-title`).textContent = this.title;
         document.querySelector(`div#${this.id} div.tale-reader`).textContent = this.reader;
     }
 }
 
-function play(id, stream) {
+function play(tale) {
     let audio = document.getElementById("audio");
 
-    if (nowPlaying === id) {
+    if (nowPlaying === tale.id) {
         nowPlaying = 0;
+        lastPlaying = tale.id;
+        offset = audio.currentTime * 1000;
+
         audio.pause();
     } else {
-        let next = getNext(id);
-        nowPlaying = id;
-        audio.src = stream;
+        let next = getNext(tale);
+        let audioOffset = (lastPlaying === tale.id) ? offset/1000 : tale.offset/1000;
+
+        audio.src = `${tale.stream}#t=${audioOffset}`;
         audio.play();
-        audio.addEventListener("ended", function () { play(next.id, next.stream); });
+        audio.addEventListener("ended", function () { play(next); });
+
+        nowPlaying = tale.id;
+        lastPlaying = tale.id;
     }
 
     setPlayBtn();
 }
 
-function getNext(id) {
+function getNext(tale) {
     for (let i = 0; i < tales.length - 1; i++) {
-        if (tales[i].id === id) return tales[i + 1];
+        if (tales[i].id === tale.id) return tales[i + 1];
     }
 
     return tales[0];
@@ -152,6 +158,8 @@ class ReadersData {
 }
 
 nowPlaying = 0;
+lastPlaying = 0;
+offset = 0;
 readers = new ReadersData();
 tales = [
     new Tale(1, 'FOR_BABIES', '02:04', 7200, 'Заєць хвалько', readers.andrii_hlyvniuk),
