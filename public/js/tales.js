@@ -1,12 +1,13 @@
 class Tale {
     constructor(id, age, duration, offset, title, reader) {
-        let index = (id).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+        let id2 = (id).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+        let id3 = (id).toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false });
         this.reader = reader;
         this.title = title;
-        this.id = `tale-${index}`;
+        this.id = `tale-${id2}`;
 
-        this.stream = `https://kazky.suspilne.media/tales/songs/${index}.mp3`;
-        this.image = `https://kazky.suspilne.media/tales/img/${index}-min.jpg`;
+        this.stream = `https://kazky.suspilne.media/tales/songs/${id2}.mp3`;
+        this.image = `/images/tales/t${id3}.jpg`;
     }
 
     add() {
@@ -22,7 +23,7 @@ class Tale {
         taleElement.innerHTML = `
             <div class="tale" style="position: relative;">
                 <img class="tale-image">
-                <img class="play-btn" src="/img/play.png">
+                <img class="play-btn" src="/images/play.png">
                 <div class="tale-title text"></div>
                 <div class="tale-reader text"></div>
             </div>`;
@@ -61,7 +62,8 @@ function getNext(id) {
 
 function setPlayBtn() {
     tales.forEach(tale => {
-        document.querySelector(`div#${tale.id} img.play-btn`).src = (tale.id == nowPlaying) ? "/img/pause.png" : "/img/play.png";
+        document.querySelector(`div#${tale.id} img.play-btn`).src
+            = (tale.id == nowPlaying) ? "/images/pause.png" : "/images/play.png";
     });
 }
 
