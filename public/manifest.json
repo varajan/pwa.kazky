@@ -1,0 +1,13 @@
+{
+    "name" : "UA: Казки",
+    "short_name" : "UA: Казки",
+    "start_url" : "/index.html",
+    "display" : "standalone",
+    "orientation" :"portrait-primary",
+    "icons" :[
+        {
+            "src": "images/logo.png",
+            "type":"image/png"
+        }
+    ]
+}
