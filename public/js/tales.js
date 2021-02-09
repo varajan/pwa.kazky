@@ -2,6 +2,7 @@ class Tale {
     constructor(id, age, duration, offset, title, reader) {
         let id2 = (id).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
         let id3 = (id).toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false });
+        this.duration = duration;
         this.offset = offset;
         this.reader = reader;
         this.title = title;
@@ -25,12 +26,14 @@ class Tale {
                 <img class="play-btn" src="/images/play.png">
                 <div class="tale-title text"></div>
                 <div class="tale-reader text"></div>
+                <div class="tale-duration text"></div>
             </div>`;
 
         document.querySelector(`div#${this.id} img.tale-image`).src = this.image;
         document.querySelector(`div#${this.id} img.play-btn`).onclick = function() { play(tale); };
         document.querySelector(`div#${this.id} div.tale-title`).textContent = this.title;
         document.querySelector(`div#${this.id} div.tale-reader`).textContent = this.reader;
+        document.querySelector(`div#${this.id} div.tale-duration`).textContent = this.duration;
     }
 }
 
