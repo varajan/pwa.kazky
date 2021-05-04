@@ -107,13 +107,37 @@ form .input-field{
   margin-top: 30px;
 }
 
+.radioText{
+  width: 80%;
+  margin: auto;
+  font-family: 'ChalkboardSE';
+  color: white;
+  font-size: 2.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .radio{
   position: absolute;
-    width: 95%;
-    font-size: 0.8em;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'ChalkboardSE';
-    text-transform: uppercase;
+  width: 95%;
+  font-size: 0.8em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'ChalkboardSE';
+  text-transform: uppercase;
+}
+
+.playBtn{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 75px;
+  display: block;
+  margin: auto;
 }

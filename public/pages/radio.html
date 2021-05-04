@@ -22,13 +22,25 @@
   <div id="sideMenu"></div>
 
   <!-- content -->
-  <div>
-    Радіо хвиля авторських казок українською мовою для дітей
+  <div class="radioText">
+    <div class="text">
+      <br>
+      Радіо хвиля авторських казок українською мовою для дітей
+    </div>
   </div>
+
   <div style="height: 100%;">
     <img src="/images/online_player.png" class="radio">
-      <img id="play" onclick="radio()" src="/images/radioPlay.png">
+      <img id="play" class="playBtn" onclick="radio()" src="/images/radioPlay.png">
     </img>
   </div>
+
+  <script>
+    document.onreadystatechange = () => {
+		if (document.readyState === 'complete') {
+      loadSideMenu();
+    }
+  }
+  </script>
 </body>
 </html>

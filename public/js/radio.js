@@ -1,17 +1,14 @@
-let audio = document.getElementById("audio");
-isPlaying = false;
-
 function radio(){
-    if (isPlaying){
-        stop();
-        isPlaying = false;
-    } else {
+    if (audio.paused){
         play();
-        isPlaying = true;
+    } else {
+        stop();
     }
 }
 
 function play() {
+    let audio = document.getElementById("audio");
+
     audio.src = `https://radio.nrcu.gov.ua:8443/kazka-mp3`;
     audio.play();
 
@@ -19,6 +16,8 @@ function play() {
 }
 
 function stop(){
+    let audio = document.getElementById("audio");
+
     audio.pause();
     document.getElementById("play").src = "/images/radioPlay.png";
 }
