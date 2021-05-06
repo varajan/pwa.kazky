@@ -13,32 +13,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/radio.js"></script>
+    <script type="text/javascript" src="/js/tales.js"></script>
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/images/logo.png">
   </head>
 <body class="grey lighten-4" background="/images/background.png">
+
   <audio id="audio"></audio>
   <div id="sideMenu"></div>
-
-  <!-- content -->
-  <div class="radioText">
-    <div class="text">
-      <br>
-      Радіо хвиля авторських казок українською мовою для дітей
-    </div>
-  </div>
-
-  <div style="height: 100%;">
-    <img src="/images/online_player.png" class="radio">
-      <img id="play" class="playBtn" onclick="radio()" src="/images/radioPlay.png">
-    </img>
-  </div>
+  <div class="tales grey-text text-darken-1" id="tales"></div>
 
   <script>
     document.onreadystatechange = () => {
 		if (document.readyState === 'complete') {
+
       loadSideMenu();
+      tales.forEach(tale => { tale.add(); });
     }
   }
   </script>

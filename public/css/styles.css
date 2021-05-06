@@ -14,9 +14,9 @@
 
 /* colours */
 :root{
-  --primary: #FFE9D2;
-  --secondary: #FFE1C4;
-  --title: #1a66c9;
+  --primary: #00cbd5;
+  --secondary: #d1d1d1;
+  --title: white;
 }
 
 /* layout styles */
